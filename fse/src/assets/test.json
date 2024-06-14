@@ -1,0 +1,56 @@
+{
+  "userDetails": {
+    "firstName": "Matt",
+    "lastName": "Adekunle",
+    "credential": "+2349072769369",
+    "email": "symplymatt@gmail.com",
+    "password": "#A1234567890z",
+    "roleName": "farmer",
+    "gender": "Male",
+    "resAddress": "ABC Alhamdulillah Str. Worldwide",
+    "ageGroup": "26 - 35",
+    "hasSmartphone": true,
+    "profilePic": {
+      "url": "https://***"
+    }
+  },
+  "idUpload": {
+    "idType": "Driver's License",
+    "idNumber": "34565576",
+    "url": "https://***"
+  },
+  "siteId": "fws-ulbtd7bp",
+  //opional
+  "bankDetails": {
+    "accountNumber": 1239876532,
+    "bankName": "Access Bank"
+  },
+  "farmDetails": [
+    {
+      "name": "Matt Farms",
+      "address": "Iyana Ipaja",
+      "long": 2.4564,
+      "lat": 6.9375,
+      "docUploads": [
+        {
+          "url": "https://"
+        },
+        {
+          "url": "https://"
+        }
+      ],
+      "crops": [
+        {
+          "cropId": "fwc-kp27khlr",
+          "farmSeasonStart": "January",
+          "farmSeasonEnd": "April"
+        },
+        {
+          "cropId": "fwc-wx1ws5ss",
+          "farmSeasonStart": "September",
+          "farmSeasonEnd": "November"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,783 @@
+$formBg-Gray: #f5f0ec;
+$btnGreen: #0e9874;
+$btnLight: #ffffff;
+$Gray700: #344054;
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == Xs {
+    @media (max-width: 575.98px) {
+      @content;
+    }
+  }
+  @if $breakpoint == Sm {
+    @media (min-width: 576px) and (max-width: 767.98px) {
+      @content;
+    }
+  } @else if $breakpoint == Md {
+    @media (min-width: 768px) and (max-width: 991.98px) {
+      @content;
+    }
+  } @else if $breakpoint == Lg {
+    @media (min-width: 992px) and (max-width: 1199.98px) {
+      @content;
+    }
+  } @else if $breakpoint == Xl {
+    @media (min-width: 1200px) {
+      @content;
+    }
+  }
+}
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1px;
+}
+.side1 {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $formBg-Gray;
+  padding: 2rem 0rem;
+  flex: 1;
+  @include respond-to(Xs) {
+    display: none;
+  }
+  @include respond-to(Sm) {
+    display: none;
+  }
+  @include respond-to(Md) {
+    display: none;
+  }
+  @include respond-to(Lg) {
+    display: none;
+  }
+
+  img {
+    object-fit: contain;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+  }
+}
+.formContainer {
+  width: 50%;
+  background: $btnLight;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  height: 100%;
+  padding: 20px 85px;
+
+  @include respond-to(Xs) {
+    padding: 10px 20px;
+    width: 100%;
+  }
+  @include respond-to(Sm) {
+    padding: 10px 20px;
+    width: 100%;
+  }
+
+  @include respond-to(Md) {
+    padding: 10px 30px;
+    width: 100%;
+  }
+
+  @include respond-to(Lg) {
+    padding: 20px 105px;
+    width: 100%;
+  }
+  .backFlexContainer {
+    width: 100%;
+    display: flex;
+    padding: 0.8rem 0.1rem;
+    justify-content: space-between;
+    align-items: center;
+    .text-top {
+      color: $Gray700;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      align-self: center;
+      font-weight: 500;
+      .text-topActive {
+        color: #0a6c52;
+        font-weight: 600;
+        margin-left: 5px;
+      }
+    }
+  }
+  .stepper {
+    width: 100%;
+    display: flex;
+    gap: 55px;
+    flex: 1;
+
+    @include respond-to(Xs) {
+      flex-direction: column;
+      gap: 10px;
+    }
+    @include respond-to(Sm) {
+      flex-direction: column;
+      gap: 10px;
+    }
+    @include respond-to(Md) {
+      flex-direction: column;
+      gap: 10px;
+    }
+    @include respond-to(Lg) {
+      flex-direction: column;
+      gap: 10px;
+    }
+    @include respond-to(Xl) {
+      flex-direction: row;
+      gap: 55px;
+    }
+    .stepperIndicatorBody {
+      width: 4px;
+      max-height: 17rem;
+      border-radius: 2rem;
+      display: flex;
+      position: relative;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      @include respond-to(Xs) {
+        flex-direction: row;
+        width: 100%;
+        gap: 10px;
+        display: none;
+      }
+      @include respond-to(Sm) {
+        flex-direction: row;
+        width: 100%;
+        display: none;
+        gap: 10px;
+      }
+      @include respond-to(Md) {
+        flex-direction: row;
+        width: 100%;
+        display: none;
+
+        gap: 10px;
+      }
+      @include respond-to(Lg) {
+        flex-direction: row;
+        gap: 10px;
+        width: 100%;
+        display: none;
+      }
+      @include respond-to(Xl) {
+        display: flex;
+      }
+
+      .stepperIndicator {
+        position: absolute;
+        top: 50px;
+        width: 3px;
+        border-radius: 12px;
+        background: $btnGreen;
+        z-index: 2;
+        transform: translateY(-50px);
+        transition: all 0.6s ease-out;
+      }
+      .stepperIndicator2 {
+        position: absolute;
+        top: 50px;
+        width: 3px;
+        height: 100%;
+        border-radius: 12px;
+        background: #eaecf0;
+        z-index: 1;
+        transform: translateY(-50px);
+      }
+      .stepperCircle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px $btnGreen solid;
+        background: $btnLight;
+        border-radius: 50%;
+        font-size: 20px;
+        font-weight: 700;
+        width: 30px;
+        height: 30px;
+        z-index: 5;
+        .circle {
+          width: 50%;
+          height: 50%;
+          border-radius: 50%;
+          background: #05523d;
+          z-index: 3;
+        }
+      }
+    }
+    .stepperIndicatorBody2 {
+      width: 4px;
+      max-height: 17rem;
+      border-radius: 2rem;
+      display: none;
+      position: relative;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      @include respond-to(Xs) {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        gap: 10px;
+      }
+      @include respond-to(Sm) {
+        flex-direction: row;
+        width: 100%;
+        display: flex;
+
+        gap: 10px;
+      }
+      @include respond-to(Md) {
+        flex-direction: row;
+        width: 100%;
+        display: flex;
+
+        gap: 10px;
+      }
+      @include respond-to(Lg) {
+        flex-direction: row;
+        gap: 10px;
+        width: 100%;
+        display: flex;
+      }
+      .stepperIndicator3 {
+        position: absolute;
+        top: 58px;
+        height: 14px;
+
+        border-radius: 12px;
+        background: $btnGreen;
+        z-index: 2;
+        transform: translateY(-50px);
+        transition: all 0.6s ease-out;
+      }
+      .stepperIndicator4 {
+        position: absolute;
+        top: 58px;
+        height: 14px;
+        width: 100%;
+
+        border-radius: 12px;
+        background: #eaecf0;
+        z-index: 1;
+        transform: translateY(-50px);
+      }
+      .stepperCircle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px $btnGreen solid;
+        background: $btnLight;
+        border-radius: 50%;
+        font-size: 20px;
+        font-weight: 700;
+        width: 30px;
+        height: 30px;
+        z-index: 5;
+        .circle {
+          width: 50%;
+          height: 50%;
+          border-radius: 50%;
+          background: #05523d;
+          z-index: 3;
+        }
+      }
+    }
+    .stepperBody {
+      width: 77%;
+      @include respond-to(Xs) {
+        width: 100%;
+        padding: 10px;
+      }
+      @include respond-to(Sm) {
+        width: 100%;
+        padding: 10px;
+      }
+      @include respond-to(Md) {
+        width: 100%;
+        padding: 10px;
+      }
+      @include respond-to(Lg) {
+        width: 100%;
+        padding: 10px;
+      }
+      .stepperForm {
+        padding: 1rem 0.1rem;
+      }
+    }
+  }
+
+  .stepperContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    .stepperBTN {
+      border: none;
+      width: 40%;
+      outline: none;
+      border-radius: 0.5rem;
+      padding: 0.8rem 1.5rem;
+    }
+    .continue {
+      background: $btnGreen;
+      color: #ffffff;
+      &:disabled {
+        background: #0e987360;
+      }
+    }
+    .back {
+      background: $btnLight;
+      color: #000000;
+      border: $formBg-Gray 2px solid;
+      &:disabled {
+        background: rgb(181 177 177 / 8%);
+        color: rgb(0 0 0 / 19%);
+      }
+    }
+  }
+}
+.formInputBody {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.flex-container {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  z-index: 100;
+  align-items: center;
+  .input-body {
+    display: flex;
+    width: 100%;
+    gap: 3px;
+    flex-direction: column;
+    label {
+      font-size: 14px;
+      font-weight: 500;
+      position: relative;
+      color: $Gray700;
+    }
+
+    .inputElem {
+      height: 7vh;
+      width: 100%;
+      padding: 8px 10px;
+      font-size: 14px;
+      color: $Gray700;
+      border: #d0d5dd 2px solid;
+      border-radius: 8px;
+      outline: none;
+      option {
+        padding: 5px !important;
+      }
+    }
+  }
+  .input-body3 {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+    flex-direction: column;
+    label {
+      font-size: 14px;
+      font-weight: 500;
+      position: relative;
+      color: $Gray700;
+    }
+  }
+}
+.textTitle1 {
+  font-size: 30px;
+  font-weight: 700;
+  color: $Gray700;
+}
+.textTitle2 {
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: -12px;
+
+  color: $Gray700;
+}
+
+.radioLabel {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 100%;
+  padding: 8px 10px;
+  margin-right: 10px;
+  .radio1 {
+    display: none;
+  }
+  span {
+    width: 1.7em;
+    height: 1.7em;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #0e9874;
+    border-radius: 50%;
+    margin-left: 10px;
+    box-sizing: border-box;
+    padding: 2px;
+    &::after {
+      content: "";
+      width: 65%;
+      height: 65%;
+      display: block;
+      background: $btnGreen;
+      border-radius: 50%;
+      transform: scale(0);
+    }
+  }
+  .radio1:checked + span::after {
+    transform: scale(1);
+    transition: transform 300ms;
+  }
+}
+.inputElem2 {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 14px;
+  color: $Gray700;
+  border: #d0d5dd 2px solid;
+  border-radius: 8px;
+  outline: none;
+
+  .button {
+    padding: 6px 8px;
+    outline: none;
+
+    background: $btnLight;
+    border: 2px solid #d0d5dd;
+    border-radius: 7px;
+  }
+}
+.flex-container2 {
+  display: flex;
+  width: 80%;
+  align-items: center;
+}
+.flex-container4 {
+  display: flex;
+  padding: 20px 0px;
+  width: 80%;
+  gap: 10px;
+  align-items: center;
+  span {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    p {
+      text-align: center;
+      font-size: 14px;
+      color: #344054;
+    }
+  }
+}
+.flex-container3 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  z-index: 1;
+  transition: all 0.5s ease-out;
+}
+.warnInfo {
+  display: flex;
+  padding: 6px 15px;
+  gap: 5px;
+  border-radius: 8px;
+  background: #fef0c7;
+  span {
+    p {
+      font-size: 12px;
+      font-weight: 400;
+      color: #b54708;
+      line-height: 18px;
+    }
+  }
+}
+.spExample {
+  font-size: 12px;
+  color: #667085;
+}
+.skipSection {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  .skipBtn {
+    display: flex;
+    border: 2px solid #d0d5dd;
+    padding: 8px 14px;
+    border-radius: 8px;
+    input[type="checkbox"] {
+      accent-color: $btnGreen;
+      color: $btnGreen;
+      padding: 2px;
+    }
+    p {
+      color: $Gray700;
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+}
+.flex-container5 {
+  display: flex;
+  width: 100%;
+  padding: 5px;
+  border-radius: 8px;
+  flex-direction: column;
+  gap: 8px;
+  .titleLabel {
+    font-size: 16px;
+    font-weight: 500;
+    color: $Gray700;
+  }
+  .container5 {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #f9fafb;
+  }
+}
+.addSection {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  button {
+    padding: 12px 8px;
+    background: #f6fffc;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #5ebaa2;
+  }
+}
+.uploadDiv {
+  width: 100%;
+  border: #d0d5dd 2px solid;
+  border-radius: 12px;
+  display: flex;
+  background: $btnLight;
+  flex-direction: column;
+  padding: 15px;
+  gap: 10px;
+  align-items: center;
+  .spanIcon {
+    display: flex;
+    border: #d0d5dd 2px solid;
+    border-radius: 12px;
+
+    padding: 8px;
+    color: $Gray700;
+    font-size: 16px;
+  }
+  p {
+    color: #475467;
+    font-size: 14px;
+    text-align: center;
+    font-weight: 400;
+    .uP1 {
+      color: #0e9874;
+      font-weight: 600;
+    }
+    .uP2 {
+      font-size: 12px;
+    }
+  }
+}
+
+.uploadedFiles {
+  width: 100%;
+  border: #d0d5dd 2px solid;
+  border-radius: 12px;
+  display: flex;
+  background: $btnLight;
+  position: relative;
+  padding: 15px;
+  gap: 10px;
+  align-items: flex-start;
+
+  .fileDetails {
+    width: 100%;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    .fileName {
+      font-size: 14px;
+      font-weight: 500;
+      color: $Gray700;
+      text-align: left;
+    }
+    .fileSize {
+      font-size: 14px;
+      font-weight: 400;
+      color: #475467;
+      text-align: left;
+    }
+    .progressContainer {
+      width: 100%;
+      padding: 8px 1px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      .progressBar {
+        width: 100%;
+        height: 10px;
+        background: #0e9874;
+        border-radius: 12px;
+      }
+      .progressNumber {
+        font-size: 14px;
+        font-size: 500;
+        color: $Gray700;
+      }
+    }
+
+    button {
+      position: absolute;
+      right: 0;
+      color: #667085;
+      background: transparent;
+      border: none;
+      outline: none;
+      top: 0;
+    }
+  }
+}
+.LoginForm {
+  width: 100%;
+  padding: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loginBio {
+  border-radius: 50%;
+  background: #e7f5f1;
+  padding: 10px;
+  width: 65px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flexUnder {
+  width: 100%;
+  display: flex;
+  padding: 10px 0;
+  justify-content: space-between;
+  align-items: center;
+  .remBer {
+    color: $Gray700;
+    font-size: 14px;
+    font-weight: 500;
+    .check {
+      accent-color: $btnGreen;
+      width: 13px;
+    }
+  }
+  .forgetPass {
+    font-size: 14px;
+    font-weight: 600;
+    color: $btnGreen;
+  }
+}
+.loginBTN {
+  width: 100%;
+  padding: 15px;
+  background: $btnGreen;
+  color: $btnLight;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+}
+.lastLink {
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  color: #475467;
+  span {
+    font-size: 14px;
+    font-weight: 600;
+    color: #0a6c52;
+  }
+}
+.logHeader {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-bottom: 15px;
+  .textTitle2 {
+    font-size: 30px;
+    font-weight: 600;
+    color: $Gray700;
+  }
+  .textTitle3 {
+    font-size: 16px;
+    font-weight: 400;
+    color: #667085;
+    line-height: 24px;
+  }
+}
+.upName {
+  font-size: 12px;
+  color: $Gray700;
+}
+.errorMessage {
+  font-size: 14px;
+  font-weight: 400;
+}
+.uploadProfilePicture2 {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
+  .button {
+    padding: 6px 8px;
+    outline: none;
+    display: flex;
+    align-items: center;
+    background: $btnLight;
+    border: 2px solid #d0d5dd;
+    border-radius: 7px;
+  }
+  .previewImg {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
