@@ -145,10 +145,6 @@ export const Form4 = ({ form, setForm }) => {
                 <span className='progressNumber'>{upload}%</span>
               </div>
               {upload === 100 ? (
-                <button type='button'>
-                  <IoMdCheckmarkCircle size={20} color='#0e9874' />
-                </button>
-              ) : (
                 <button
                   type='button'
                   onClick={() =>
@@ -158,6 +154,10 @@ export const Form4 = ({ form, setForm }) => {
                     })
                   }>
                   <IoMdTrash size={20} />
+                </button>
+              ) : (
+                <button type='button'>
+                  <IoMdCheckmarkCircle size={20} color='#0e9874' />
                 </button>
               )}
             </div>
