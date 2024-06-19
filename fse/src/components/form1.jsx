@@ -320,6 +320,7 @@ export const Form1 = ({ form, setForm }) => {
             style={{
               display: "flex",
               alignItems: "center",
+              paddingBottom: "5px",
               color: error ? "#F04438" : "#475467",
             }}>
             {error ? (
@@ -337,6 +338,8 @@ export const Form1 = ({ form, setForm }) => {
             className='errorMessage'
             style={{
               display: "flex",
+              paddingBottom: "5px",
+
               alignItems: "center",
               color: iconError ? "#F04438" : "#475467",
             }}>
