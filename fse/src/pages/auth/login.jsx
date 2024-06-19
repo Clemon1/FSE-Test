@@ -4,17 +4,36 @@ import { useState } from "react";
 import "../../App.scss";
 import { TbFingerprint } from "react-icons/tb";
 import { Link } from "react-router-dom";
+import { useAddLoginMutation } from "../../redux/RTK-Query/auth";
+import { useDispatch } from "react-redux";
+import { authenticate } from "../../redux/authSlice";
 export const Login = () => {
   const [form, setForm] = useState({
-    email: "",
+    credential: "",
     password: "",
   });
+  const body = {
+    credential: form.credential,
+    password: form.password,
+  };
+  console.log("body:", body);
+  const [addLogin] = useAddLoginMutation();
+  const dispatch = useDispatch();
+  const handleLoginForm = async (e) => {
+    e.preventDefault();
+    try {
+      const req = dispatch(authenticate(await addLogin(body).unwrap()));
+      console.log(req);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className='container'>
       <div className='side1'>
         <img src={img5} />
       </div>
-      <form className='formContainer'>
+      <form className='formContainer' onSubmit={handleLoginForm}>
         <div className='backFlexContainer'>
           <span
             style={{
@@ -44,7 +63,7 @@ export const Login = () => {
                     placeholder='Enter email or Phone number'
                     value={form.email}
                     onChange={(e) =>
-                      setForm({ ...form, email: e.target.value })
+                      setForm({ ...form, credential: e.target.value })
                     }
                   />
                 </div>
@@ -59,7 +78,7 @@ export const Login = () => {
                   <label>Password</label>
                   <input
                     className='inputElem'
-                    type='text'
+                    type='password'
                     placeholder='Enter password'
                     value={form.password}
                     onChange={(e) =>
