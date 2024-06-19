@@ -49,29 +49,6 @@ export const Form4 = ({ form, setForm }) => {
     }));
   };
 
-  const addFarm = () => {
-    setForm((prevForm) => ({
-      ...prevForm,
-      farmDetails: [
-        ...prevForm.farmDetails,
-        {
-          name: "",
-          address: "",
-          long: "",
-          lat: "",
-          docUploads: [],
-          crops: [
-            {
-              cropId: "",
-              farmSeasonStart: "",
-              farmSeasonEnd: "",
-            },
-          ],
-        },
-      ],
-    }));
-  };
-
   return (
     <div className='formInputBody'>
       <h4 className='textTitle2'>Farm Registration</h4>
@@ -341,11 +318,6 @@ export const Form4 = ({ form, setForm }) => {
             ))}
         </div>
       ))}
-      <div className='addSection'>
-        <button type='button' onClick={addFarm}>
-          <IoMdAdd /> Add another farm
-        </button>
-      </div>
     </div>
   );
 };
