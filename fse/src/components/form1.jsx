@@ -213,8 +213,8 @@ export const Form1 = ({ form, setForm }) => {
               })
             }>
             <option>Select site</option>
-            <option>20</option>
-            <option>30</option>
+            <option value={"Ajegunle"}>Ajegunle</option>
+            <option value={"Jakande"}>Jakande</option>
           </select>
         </div>
       </div>
