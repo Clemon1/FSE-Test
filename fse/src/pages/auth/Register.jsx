@@ -95,6 +95,15 @@ export const Register = () => {
     }
   };
 
+  const stepValidation =
+    form.firstName === "" ||
+    form.lastName === "" ||
+    form.email === "" ||
+    form.age === "" ||
+    form.gender === "" ||
+    form.phone === "" ||
+    form.password === "" ||
+    form.confirmPassword === "";
   const body = {
     userDetails: {
       firstName: form.firstName,
@@ -211,7 +220,9 @@ export const Register = () => {
             finished={page === 3}
             handleSubmit={handleRegistrations}
             btnText={page === 3 ? "Add Farm" : "Continue"}
-            continueBtnDisabled={page === 3 || (page === 2 && skip === false)}>
+            continueBtnDisabled={
+              stepValidation || page === 3 || (page === 2 && skip === false)
+            }>
             <>{multiStepper()}</>
           </MultiStepFormBody>
         </section>
