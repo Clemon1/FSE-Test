@@ -103,15 +103,13 @@ export const Form2 = ({ form, setForm }) => {
                 <label>Bank Name</label>
                 <select
                   className='inputElem'
-                  value={form.bankDetails.bankName}
+                  value={form.bankName}
                   placeholder='Select Bank'
                   onChange={(e) =>
                     setForm({
                       ...form,
-                      bankDetails: {
-                        ...form.bankDetails,
-                        bankName: e.target.value,
-                      },
+
+                      bankName: e.target.value,
                     })
                   }>
                   <option>Select Bank</option>
@@ -130,14 +128,12 @@ export const Form2 = ({ form, setForm }) => {
                   className='inputElem'
                   type='text'
                   placeholder='Account Number'
-                  value={form.bankDetails.accountNumber}
+                  value={form.accountNumber}
                   onChange={(e) =>
                     setForm({
                       ...form,
-                      bankDetails: {
-                        ...form.bankDetails,
-                        accountNumber: e.target.value,
-                      },
+
+                      accountNumber: e.target.value,
                     })
                   }
                 />

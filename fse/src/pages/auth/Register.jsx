@@ -12,9 +12,11 @@ import { Form4 } from "../../components/form4";
 import { StepperIndicator } from "../../components/stepperIndicator";
 import { MultiStepFormBody } from "../../components/mutistepFormBody";
 import { MdKeyboardArrowLeft } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { MobileStepperIndicator } from "../../components/MobileStepper";
-import axios from "axios";
+import { useAddRegisterMutation } from "../../redux/RTK-Query/auth";
+import { useDispatch } from "react-redux";
+import { authenticate } from "../../redux/authSlice";
 
 export const Register = () => {
   const [page, setPage] = useState(0);
@@ -42,37 +44,35 @@ export const Register = () => {
       url: "",
     },
     siteId: "",
-    bankDetails: {
-      accountNumber: "",
-      bankName: "",
-    },
-    farmDetails: {
-      name: "",
-      address: "",
-      long: "",
-      lat: "",
-      docUploads: [
-        {
-          url: "",
-        },
-        {
-          url: "",
-        },
-      ],
-      crops: [
-        {
-          cropId: "",
-          farmSeasonStart: "",
-          farmSeasonEnd: "",
-        },
-        {
-          cropId: "",
-          farmSeasonStart: "",
-          farmSeasonEnd: "",
-        },
-      ],
-    },
+
+    accountNumber: "",
+    bankName: "",
+
+    farmDetails: [
+      {
+        name: "",
+        address: "",
+        long: "",
+        lat: "",
+        docUploads: [
+          {
+            url: "",
+          },
+        ],
+        crops: [
+          {
+            cropId: "",
+            farmSeasonStart: "",
+            farmSeasonEnd: "",
+          },
+        ],
+      },
+    ],
   });
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [addRegister] = useAddRegisterMutation();
   console.log(form);
   const handleBack = (e) => {
     e.preventDefault();
@@ -94,45 +94,6 @@ export const Register = () => {
       return <Form4 form={form} setForm={setForm} />;
     }
   };
-  const formData = new FormData();
-
-  // formData.append("firstName", form.firstName);
-  // formData.append("lastName", form.lastName);
-  // formData.append("email", form.email);
-
-  // for (const upload in form.idUpload) {
-  //   formData.append(`idUpload.${upload}`, form.idUpload[upload]);
-  // }
-
-  // formData.append("siteId", form.siteId);
-
-  // for (const bankDetails in form.bankDetails) {
-  //   formData.append(
-  //     `bankDetails.${bankDetails}`,
-  //     form.bankDetails[bankDetails],
-  //   );
-  // }
-  // for (const farm in form.farmDetails) {
-  //   if (farm === "docUploads") {
-  //     form.farmDetails.docUploads.forEach((doc, index) => {
-  //       formData.append(`farmDetails.docUploads[${index}].url`, doc.url);
-  //     });
-  //   } else if (farm === "crops") {
-  //     form.farmDetails.crops.forEach((crop, index) => {
-  //       formData.append(`farmDetails.crops[${index}].cropId`, crop.cropId);
-  //       formData.append(
-  //         `farmDetails.crops[${index}].farmSeasonStart`,
-  //         crop.farmSeasonStart,
-  //       );
-  //       formData.append(
-  //         `farmDetails.crops[${index}].farmSeasonEnd`,
-  //         crop.farmSeasonEnd,
-  //       );
-  //     });
-  //   } else {
-  //     formData.append(`farmDetails.${farm}`, form.farmDetails[farm]);
-  //   }
-  // }
 
   const body = {
     userDetails: {
@@ -149,32 +110,49 @@ export const Register = () => {
       hasSmartphone: true,
 
       profilePic: {
-        url: formData.append("profilePic.url", form.profilePic.url),
+        url: "https://",
       },
     },
     idUpload: {
       idType: form.idUpload.idType,
       idNumber: form.idUpload.idNumber,
-      url: "dddds",
+      url: "https://",
     },
     siteId: "fws-rjcszynq",
     bankDetails: {
-      backName: form.bankDetails.bankName,
-      accountNumber: form.bankDetails.accountNumber,
+      bankName: form.bankName,
+      accountNumber: form.accountNumber,
     },
-    farmDetails: form.farmDetails,
+    farmDetails: [
+      {
+        name: form.farmDetails.name,
+        address: "address",
+        long: form.farmDetails.long,
+        lat: form.farmDetails.lat,
+        docUploads: [
+          {
+            url: "https://",
+          },
+        ],
+        crops: [
+          {
+            cropId: form.farmDetails.cropId,
+            farmSeasonStart: form.farmDetails.farmSeasonStart,
+            farmSeasonEnd: form.farmDetails.farmSeasonEnd,
+          },
+        ],
+      },
+    ],
   };
+
   const handleRegistrations = async (e) => {
     e.preventDefault();
     try {
-      const req = await axios.post(
-        "https://www.dev.farmwarehouse.ng/api/users/signup",
-        body,
-      );
-      await req.data;
-      console.log(req.data);
+      const req = dispatch(authenticate(await addRegister(body).unwrap()));
+      navigate("/login");
+      console.log("result:", req);
     } catch (error) {
-      console.log(error.response.data);
+      console.log(error);
     }
   };
 
