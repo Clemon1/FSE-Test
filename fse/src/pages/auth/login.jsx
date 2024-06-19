@@ -17,7 +17,7 @@ export const Login = () => {
     password: form.password,
   };
   console.log("body:", body);
-  const [addLogin] = useAddLoginMutation();
+  const [addLogin, { isError }] = useAddLoginMutation();
   const dispatch = useDispatch();
   const handleLoginForm = async (e) => {
     e.preventDefault();
@@ -25,7 +25,7 @@ export const Login = () => {
       const req = dispatch(authenticate(await addLogin(body).unwrap()));
       console.log(req);
     } catch (error) {
-      console.log(error);
+      console.log(error.data);
     }
   };
   return (
@@ -66,6 +66,8 @@ export const Login = () => {
                       setForm({ ...form, credential: e.target.value })
                     }
                   />
+                  {isError === "Please provide credential and password!" &&
+                    isError}
                 </div>
               </div>
               <span className='spExample'>

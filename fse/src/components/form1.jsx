@@ -45,7 +45,7 @@ export const Form1 = ({ form, setForm }) => {
       ...form,
       confirmPassword: newConfirmPassword,
     });
-    if (newConfirmPassword !== form.userDetails.password) {
+    if (newConfirmPassword !== form.password) {
       setConfirmErrorPassword(true);
     } else {
       setConfirmErrorPassword(false);
